@@ -1,0 +1,14 @@
+
+#Fichier GitIgnore
+
+
+#Absolu
+
+#Programmer_En_C_RS_V1_0/bin/Debug/Programmer_En_C_RS_V1_0.exe
+#Programmer_En_C_RS_V1_0/obj/Debug/main.o
+
+
+#Relatif
+
+*.exe
+*.o
