@@ -4,39 +4,96 @@
 
                 //Après les constantes.
 #define NFOIS 5 //Ecriture de constantes. (elle n'est pas typée)
+                //Constante, générée à l'exécution.
+#define PI 3.14
+#define NOM "Lehmann"
+#define CAR 'x'
 
 //Exemple de programme en C
 
+//Commentaire en ligne.
+/*Commentaire
+Paragraphe*/
+
+
 int main() //Programme principal qui est une fonction qui retourne un entier.
 {
-    //Note : Utiliser la doc http://www.cplusplus.com/
+    //Integer
+    short int nA; //short sn (shortinteger)
+    int nB;
+    long int nC; //long ln (longinteger)
 
-    int i;
-    float x;
-    float racx;
+ //   const int cnT=10; //Constante locale au programme principal, et déjà générée.
 
-    printf("Bonjour\n");//printf pour écrire dans un affichage formaté. On pourra plus tard justifier la notion de formats. Il a besoin de la bibliothèque <stdio.h>.
-    printf("Calcule de %d racines carree \n",NFOIS); //Le %d sert à spécifier le former de la donnée.
+ //   volatile int nVolB;
 
-    for(i=0; i<NFOIS; i++)
-    {
-        printf("Donnez un nombre :");
-        scanf("%f",&x); //Fonction servait à récupérer la saisie de donnée d'un certaon type. %f pour le float. Le &x est la référence de la variable x. On demande un float et on le met dans x avec la référence de x.
-        if (x<0.0) //.0 important car c'est un réel
-            printf("Le nombre %f ne possede pas de racine carree\n",x);
-        else
-        {
-            racx=sqrt(x);
-            printf("Le nombre %f a pour racine carree : %f\n",x,racx);
-        }
-    }
+ //   static int nStatb;
 
-    printf("Travail Termine - Au revoir."); //On évite les accents sur la console.
+    //Le choix du type de la variable défini la taille en octet de l'encodage choisit.
 
-    /*
-    racx=sqrt(x);
-    printf("Je vais vous calculer la racine carree %lf",sqrt(x));//On va définir le former de la valeur de sqrt à afficher. Il qualifie la valeur correspondant à ce % en passant la référence de l'argument après la virgule.
-    */
+    printf("Taille de a : %d octets\n",sizeof(nA)); //sizeof retourne la taille en octet.
+    printf("Taille de b : %d octets\n",sizeof(nB));
+    printf("Taille de c : %d octets\n",sizeof(nC));
 
-    return 0; //L'entier retourné.
-}//Si le programme principal est une fonction on retourne, sinon on ferme juste les accolades.
+    //Real
+    float fltReelSimple;
+
+    double dblReelDouble;
+
+    printf("Taille de fltReelSimple : %d octets\n",sizeof(fltReelSimple));
+    printf("Taille de dblReelDouble : %d octets\n",sizeof(dblReelDouble));
+
+    //Caractère
+
+    char cCaractere;
+    printf("Taille de cCaractere : %d octets\n",sizeof(cCaractere));
+
+    //Tester les Define.
+
+    printf("Afficher le #define NFOIS : %d \n",NFOIS);
+    printf("Afficher le #define PI : %f \n",PI);
+    printf("Afficher le #define NOM : %s \n",NOM);
+    printf("Afficher le #define CAR : %c \n",CAR);
+
+    //Opérateurs.
+
+    int nI=0;
+    ++nI; //pre-incrementation
+    nI++;//post-incrémentation.
+    //% modulo.
+    /* / division */
+
+
+
+    //Cast
+    long double ldblLongDouble=105.08933259635;
+    printf("Valeur de ldblLongDouble : %lf",(double)ldblLongDouble);
+
+    //Opérateurs relationnels.
+    // >
+    // <
+    // >=
+    // <=
+    // ==
+    // !=
+
+    //Opérateurs logiques
+    // &
+    // &&
+    // |
+    // ||
+    // !
+
+
+    //Factorisation des opérateurs.
+    // +=
+    // -=
+    // *=
+    // /=
+    // %=
+    // ....
+
+    // nA+=nB;
+
+    return 0;
+}
