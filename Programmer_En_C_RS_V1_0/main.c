@@ -6,8 +6,10 @@
 #define NFOIS 5 //Ecriture de constantes. (elle n'est pas typée)
                 //Constante, générée à l'exécution.
 #define PI 3.14
-#define NOM "Lehmann"
+#define NOM "Schlotter"
 #define CAR 'x'
+
+#define TAILLE 5
 
 //Exemple de programme en C
 
@@ -67,7 +69,7 @@ int main() //Programme principal qui est une fonction qui retourne un entier.
 
     //Cast
     long double ldblLongDouble=105.08933259635;
-    printf("Valeur de ldblLongDouble : %lf",(double)ldblLongDouble);
+    printf("Valeur de ldblLongDouble : %lf \n",(double)ldblLongDouble);
 
     //Opérateurs relationnels.
     // >
@@ -94,6 +96,150 @@ int main() //Programme principal qui est une fonction qui retourne un entier.
     // ....
 
     // nA+=nB;
+
+    //Structures conditions et boucles.
+
+    int bool=1;
+    printf("Si bool=1 alors écrire 10, sinon ecrire 100, ici bool=%d \n",bool);
+
+    //La condition.
+    if (bool==1) //Parenthèses obligatoires.
+    {
+        printf("10 \n");
+    }
+    else //Le sinon.
+    {
+        printf("100 \n");
+    }
+
+    bool=0;
+    printf("Si bool=1 alors écrire 10, sinon ecrire 100, ici bool=%d \n",bool);
+    if (bool==1)
+    {
+        printf("10 \n");
+    }
+    else
+    {
+        printf("100 \n");
+    }
+
+    //Condition avec les opérateurs logiques.
+    int a=0,b=0,c=0,d=0;
+
+    if ((a==b) && (a==c))
+    {
+        printf("Ils sont tous egaux\n");
+    }
+    else
+    {
+        printf("Ils sont differents\n");
+    }
+
+    if ((a==b)||(a==c))
+    {
+        printf("Ils sont egaux\n");
+    }
+    else
+    {
+        printf("Ils sont differents\n");
+    }
+
+    if ((a==b)||(a==c))
+    {
+        printf("Ils sont egaux\n");
+    }
+    else if((a==c) && (a!=d))
+    {
+        printf("blabla...\n");
+    }
+    else
+    {
+        printf("Ils sont differents\n");
+    }
+
+    printf("Pour i de 1 a 5 ecrire i. \n");
+
+    //Boucle
+
+    int i=0;
+
+    for (i=1;i<= TAILLE;i++)
+    {
+        printf("%d \n",i);
+    }
+
+    //Le tant que
+
+    printf("Tant que i<=10 ecrire i, en incrementant a la fin de la boucle. \n");
+
+    const int t=10; //C'est pour être sûr d'avoir une valeur qui ne bougera pas.
+
+    while (i<=t)
+    {
+        printf("%d \n",i);
+        i++;
+    }
+
+    printf("Faire ecrire i Tant que i>0, en decrementant en debut de boucle. \n");
+
+    do
+    {
+        i--;
+        printf("%d \n",i);
+    }
+    while(i>0);
+
+    //Les cas alternatifs de la condition.
+
+    //Le switch case.
+
+    int choix=-1; //Pour modifier après et ne pas avoir un des choix du cas.
+    printf("Veuillez entrer votre choix.\n");
+    scanf("%d",&choix);
+    switch (choix)
+    {
+        case 0:printf("Quitter\n"); break;
+        case 1:printf("Calculer\n"); break;
+        case 2:printf("Jouer\n");break;
+        default:printf("Defaut\n");break;
+    }
+
+    // test ?:instruction 1 : instruction 2
+
+    a==b? printf("Egaux\n"):printf("Diff\n");
+
+    printf("Test ternaire si i vaut 1 le numero prend la valeur 7, sinon il prend la valeur 14, puis ecrire le numero. \n");
+    int lenumero;
+    lenumero = (i==1) ? 7: 14;
+    printf("%d \n",lenumero);
+
+    i=1;
+    lenumero = (i==1) ? 7: 14;
+    printf("%d \n",lenumero);
+
+    //L'instruction Break :
+
+    for (i=1;i<= TAILLE;i++)
+    {
+        printf("%d \n",i);
+        if(i==3)
+        {
+            break;
+        }
+    }
+
+    //L'instruction Continue :
+
+    for (i=1;i<= TAILLE;i++)
+    {
+        printf("%d \n",i);
+        if(i<3)
+        {
+            printf("continue\n");
+            continue;
+        }
+    }
+
 
     return 0;
 }
