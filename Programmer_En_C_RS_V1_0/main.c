@@ -17,74 +17,72 @@ int main()
         printf("Votre caractere est %c.\n",carac);
     }*/
 
-    int i,n,som;
+    int nI,nN,nSom;
     //Exercice 1.1
-    som=0;
-    i=0;
-    while (i<4)
+    nSom=0;
+    nI=0; //Vérifier que nI soit bien différent du test.
+    while (nI<4)
     {
         printf("Donnez un entier pour obtenir la somme de 4 entiers.\n");
-        scanf("%d",&n);
+        scanf("%d",&nN);
         fflush(stdin);
-        som+=n;
-        i++;
+        nSom+=nN;
+        nI++; //Ne pas oublier l'incrément.
     }
-    printf("Somme : %d\n",som);
+    printf("Somme : %d\n",nSom);
 
     //Exercice 1.2
-    som=0;
-    i=0;
+    nSom=0;
+    nI=0;
     do
     {
         printf("Donnez un entier pour obtenir la somme de 4 entiers.\n");
-        scanf("%d",&n);
+        scanf("%d",&nN);
         fflush(stdin);
-        som+=n;
-        i++;
+        nSom+=nN;
+        nI++;
     }
-    while (i<4);
-    printf("Somme : %d\n",som);
+    while (nI<4);
+    printf("Somme : %d\n",nSom);
 
     //Exercice 2
 
-    double note=0.0,totalnote=0.0;
-    int nbnote=0;
-    while(note>=0)
+    double lfNote=0.0,lfTotalNote=0.0;
+    int nNbnote=0;
+    do
     {
         printf("Veuillez entrer une note pour obtenir la moyenne des notes entrees, ou une valeur negative pour terminer.\n");
-        scanf("%lf",&note);
+        scanf("%lf",&lfNote);
         fflush(stdin);
-        if (note>=0.0)
+        if (lfNote>=0.0)
         {
-            totalnote=totalnote+note;
-            nbnote=nbnote+1;
+            lfTotalNote=lfTotalNote+lfNote;
+            nNbnote=nNbnote+1;
         }
-        else if(nbnote>0)
+        else if(nNbnote>0)
         {
             printf("Calcul de la solution.\n");
-            totalnote=(totalnote/nbnote);
-            printf("La moyenne des notes est %lf \n",totalnote);
+            lfTotalNote=(lfTotalNote/nNbnote);
+            printf("La moyenne des notes est %lf \n",lfTotalNote);
         }
         else
         {
             printf("Vous n'avez pas rentrer de notes, fin du programme.\n");
         }
-    }
+    }while(lfNote>=0);
 
 
 
     //Exercice 3
 
-    int ni;
+    int nNi,nJ=1;
+    nI=1;
     printf("Veuillez rentrer une taille pour le triangle. \n");
-    scanf("%d",&ni);
+    scanf("%d",&nNi);
     fflush(stdin);
-    const int compteur=ni;
-    i=1;
-    int j=1;
-    for (i=1;i<=compteur;i++)
+    for (nI=1;nI<=nNi;nI++)
     {
-        for(j=1;j<=i;j++)
+        for(nJ=1;nJ<=nI;nJ++)
         {
             printf("*");
         }
@@ -94,69 +92,63 @@ int main()
     //Exercice 4
 
     printf("Veuiller entrer un entier pour verifier si il est premier.\n");
-    int premier;
-    scanf("%d",&premier);
-    int boolpremier=1;
-    double resultpremier=1;
-    int r;
-    if (premier==1)
+    int nPremier,nBoolPremier=1,nR;
+    double lfResultPremier=1;
+    scanf("%d",&nPremier);
+    if (nPremier==1)
     {
-        resultpremier=0;
+        lfResultPremier=0;
     }
     else
     {
-        for (r=2;r<=(premier/2);r++)
+        for (nR=2;nR<=(nPremier/2);nR++)
         {
-            resultpremier=(premier%r);
-            if (resultpremier==0.0)
+            lfResultPremier=(nPremier%nR);
+            if (lfResultPremier==0.0)
             {
-                boolpremier=0;
+                nBoolPremier=0;
             }
         }
     }
-
-    if (boolpremier==1)
+    if (nBoolPremier==1)
     {
-        printf("%d est premier.\n",premier);
+        printf("%d est premier.\n",nPremier);
     }
     else
     {
-        printf("%d n'est pas premier.\n",premier);
+        printf("%d n'est pas premier.\n",nPremier);
     }
 
     //Exercice 5
     printf("Veuillez rentrer la n-ieme valeur que vous voulez voir dans la suite de Fibonacci.\n");
-    int nieme=1;
-    scanf("%d",&nieme);
+    int nNieme=1;
+    scanf("%d",&nNieme);
     fflush(stdin);
-    if (nieme<=2)
+    if (nNieme<=2)
     {
-        printf("La valeur de %d la suite de Fibonacci est 1 \n",nieme);
+        printf("La valeur de %d la suite de Fibonacci est 1 \n",nNieme);
     }
     else
     {
-        int u=1;
-        int x=0;
-        int o=1;
-        int p=1;
-        for (u=2;u<nieme;u++)
+        int nU=1,nX=0,nO=1,nP=1;
+        while(nU++<nNieme)
         {
-            x=o+p;
-            o=p;
-            p=x;
+            nX=nO+nP;
+            nO=nP;
+            nP=nX;
         }
-        printf("La valeur du numero %d de la suite de Fibonacci est %d \n",nieme,x);
+        printf("La valeur du numero %d de la suite de Fibonacci est %d \n",nNieme,nX);
     }
 
-    int imult=1;
-    int jmult=1;
-    int rmult=1;
-    for (imult=1; imult<=10; imult++)
+    //Exercice 6
+
+    int nImult=1,nJmult=1,nRmult=1;
+    for (nImult=1; nImult<=10; nImult++)
     {
-        for (jmult=1;jmult<=10;jmult++)
+        for (nJmult=1;nJmult<=10;nJmult++)
         {
-            rmult=imult*jmult;
-            printf(" %d ",rmult);
+            nRmult=nImult*nJmult;
+            printf("%4d",nRmult); //%4d pour limiter ou donner une taille max à l'affichage.
         }
         printf("\n");
     }
