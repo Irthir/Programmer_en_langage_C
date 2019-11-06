@@ -1,157 +1,94 @@
-#include <stdio.h> //En entête les bibliothèques.
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-//#include <ctype.h>
 
+#define TAILLE 100
+#define MOT "HELLO"
+
+//Les Tableaux.
 
 
 int main()
 {
-    /*char carac;
-    carac=getchar();
-    while ((carac>='a'&&carac<='z')||(carac>='A' && carac<='Z'))//(isalpha(carac))
-    {
-        printf("Veuillez entrer un caractere.\n");
-        scanf("%c",&carac);
-        fflush(stdin);
-        printf("Votre caractere est %c.\n",carac);
-    }*/
+    /*
+    int nTabInteger[TAILLE];
+    float fltTabFloat[TAILLE];
+    double dblTabDouble[TAILLE];
 
-    int nI,nN,nSom;
-    //Exercice 1.1
-    nSom=0;
-    nI=0; //Vérifier que nI soit bien différent du test.
-    while (nI<4)
+    char cTabCar[TAILLE];
+
+    int nI=0;
+
+    for(nI=0;nI<TAILLE;nI++)
     {
-        printf("Donnez un entier pour obtenir la somme de 4 entiers.\n");
-        scanf("%d",&nN);
-        fflush(stdin);
-        nSom+=nN;
-        nI++; //Ne pas oublier l'incrément.
+        nTabInteger[nI]=0;
+        fltTabFloat[nI]=0.0;
+        dblTabDouble[nI]=0.0;
+        cTabCar[nI]='\0'; //Correspond au caractère de fin de chaine.
     }
-    printf("Somme : %d\n",nSom);
+    */
+    //Tout ce qu'on a déclaré jusqu'à présent est déclaré dans la pile.
 
-    //Exercice 1.2
-    nSom=0;
-    nI=0;
-    do
+    //Faire un programme qui crée des cartes d'identités.
+    //Un programme permettant de saisir un numéro d'identification, nom, prénom, date de naissance, et adresse postale : "Numéro","Nom de la rue","Code Postal", "Ville".
+    //Prendre en considération une chaine avec des espaces, date d'anniversaire et code postale sur un nombre limité de chiffres et caractères.
+    //On utilise des tableaux pour illustrer les informations carte d'identité.
+
+    //TD carte identité.
+
+    printf("Nous allons creer votre carte d'identite, nous allons commencer par votre nom, puis votre prenom, ensuite votre date de naissance et votre adresse postale, composee du numero de la rue, du nom de la rue, du code postal et de la ville.\n");
+    char sNomIdentite[TAILLE],sPrenomIdentite[TAILLE],sNomDeLaRue[TAILLE],sVille[TAILLE],sDateDeNaissance[11],sCodePostal[6];
+    int nNumeroDeRue=0, nI=0;
+    for(nI=0;nI<TAILLE;nI++)
     {
-        printf("Donnez un entier pour obtenir la somme de 4 entiers.\n");
-        scanf("%d",&nN);
-        fflush(stdin);
-        nSom+=nN;
-        nI++;
-    }
-    while (nI<4);
-    printf("Somme : %d\n",nSom);
-
-    //Exercice 2
-
-    double lfNote=0.0,lfTotalNote=0.0;
-    int nNbnote=0;
-    do
-    {
-        printf("Veuillez entrer une note pour obtenir la moyenne des notes entrees, ou une valeur negative pour terminer.\n");
-        scanf("%lf",&lfNote);
-        fflush(stdin);
-        if (lfNote>=0.0)
+        sNomIdentite[nI]='\0'; //Correspond au caractère de fin de chaine.
+        sPrenomIdentite[nI]='\0'; //Correspond au caractère de fin de chaine.
+        sNomDeLaRue[nI]='\0'; //Correspond au caractère de fin de chaine.
+        sVille[nI]='\0'; //Correspond au caractère de fin de chaine.
+        if (nI<11)
         {
-            lfTotalNote=lfTotalNote+lfNote;
-            nNbnote=nNbnote+1;
-        }
-        else if(nNbnote>0)
-        {
-            printf("Calcul de la solution.\n");
-            lfTotalNote=(lfTotalNote/nNbnote);
-            printf("La moyenne des notes est %lf \n",lfTotalNote);
-        }
-        else
-        {
-            printf("Vous n'avez pas rentrer de notes, fin du programme.\n");
-        }
-    }while(lfNote>=0);
-
-
-
-    //Exercice 3
-
-    int nNi,nJ=1;
-    nI=1;
-    printf("Veuillez rentrer une taille pour le triangle. \n");
-    scanf("%d",&nNi);
-    fflush(stdin);
-    for (nI=1;nI<=nNi;nI++)
-    {
-        for(nJ=1;nJ<=nI;nJ++)
-        {
-            printf("*");
-        }
-        printf("\n");
-    }
-
-    //Exercice 4
-
-    printf("Veuiller entrer un entier pour verifier si il est premier.\n");
-    int nPremier,nBoolPremier=1,nR;
-    double lfResultPremier=1;
-    scanf("%d",&nPremier);
-    if (nPremier==1)
-    {
-        lfResultPremier=0;
-    }
-    else
-    {
-        for (nR=2;nR<=(nPremier/2);nR++)
-        {
-            lfResultPremier=(nPremier%nR);
-            if (lfResultPremier==0.0)
+            sDateDeNaissance[nI]='\0'; //Correspond au caractère de fin de chaine.
+            if(nI<6)
             {
-                nBoolPremier=0;
+                sCodePostal[nI]='\0'; //Correspond au caractère de fin de chaine.
             }
         }
     }
-    if (nBoolPremier==1)
-    {
-        printf("%d est premier.\n",nPremier);
-    }
-    else
-    {
-        printf("%d n'est pas premier.\n",nPremier);
-    }
 
-    //Exercice 5
-    printf("Veuillez rentrer la n-ieme valeur que vous voulez voir dans la suite de Fibonacci.\n");
-    int nNieme=1;
-    scanf("%d",&nNieme);
+    printf("Veuillez tout d'abord entrer votre nom.\n");
+    gets(sNomIdentite);
     fflush(stdin);
-    if (nNieme<=2)
-    {
-        printf("La valeur de %d la suite de Fibonacci est 1 \n",nNieme);
-    }
-    else
-    {
-        int nU=1,nX=0,nO=1,nP=1;
-        while(nU++<nNieme)
-        {
-            nX=nO+nP;
-            nO=nP;
-            nP=nX;
-        }
-        printf("La valeur du numero %d de la suite de Fibonacci est %d \n",nNieme,nX);
-    }
+    printf("Veuillez a present entrer votre prenom.\n");
+    gets(sPrenomIdentite);
 
-    //Exercice 6
+    //printf("Le Nom et le Prenom %s %s",sNomIdentite,sPrenomIdentite); //Premier test concluant.
 
-    int nImult=1,nJmult=1,nRmult=1;
-    for (nImult=1; nImult<=10; nImult++)
+    printf("Veuillez alors entrer votre date de naissance sous la forme JJ/MM/AAAA.\n");
+    gets(sDateDeNaissance);
+    printf("Nous allons a present recuperer votre adresse postale.\n");
+    printf("Veuillez entrer votre numero de rue.\n");
+    scanf("%d",&nNumeroDeRue);
+    fflush(stdin);
+    printf("A present, veuillez entrer le nom de la rue.\n");
+    gets(sNomDeLaRue);
+    printf("Veuillez alors entrer votre code postal.\n");
+    gets(sCodePostal);
+    printf("Enfin, veuillez entrer le nom de la ville.\n");
+    gets(sVille);
+
+    for (nI=0;nI<80;nI++)
     {
-        for (nJmult=1;nJmult<=10;nJmult++)
-        {
-            nRmult=nImult*nJmult;
-            printf("%4d",nRmult); //%4d pour limiter ou donner une taille max à l'affichage.
-        }
-        printf("\n");
+        printf("_");
     }
-
+    printf("\n|\n");
+    printf("|   Nom : %s \n",sNomIdentite);
+    printf("|   Prenom : %s \n",sPrenomIdentite);
+    printf("|   Ne(e) le : %s \n",sDateDeNaissance);
+    printf("|   Adressse Postale : %d %s %s %s \n",nNumeroDeRue,sNomDeLaRue,sCodePostal,sVille);
+    printf("|");
+    for (nI=0;nI<80;nI++)
+    {
+        printf("_");
+    }
     return 0;
 }
