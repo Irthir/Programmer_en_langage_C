@@ -1,94 +1,171 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
-#define TAILLE 100
-#define MOT "HELLO"
+#define LONGMAX 1000000000
+#define N 5
+#define M 3
 
-//Les Tableaux.
+//Exercices.
 
+//Les Prototypes.
+void Exercice1();
+void f1();
+void f2(int nNbf2);
+int f3(int nNbf3);
+
+void Exercice2(); //Affiche 5 n(global) puis 3 n(local)
+void fct(int p);
+
+void Exercice3();
+void CompteAppel(long nlLeCompteurAppel);
+
+void Exercice4();
+int Ackermann(int nM,int nN);
 
 int main()
 {
-    /*
-    int nTabInteger[TAILLE];
-    float fltTabFloat[TAILLE];
-    double dblTabDouble[TAILLE];
+	printf("Exercice1 : \n");
+	Exercice1();
 
-    char cTabCar[TAILLE];
+	printf("Exercice2 : \n");
+    Exercice2();
+    printf("\n");
 
-    int nI=0;
+	printf("Exercice3 : \n");
+	Exercice3();
 
-    for(nI=0;nI<TAILLE;nI++)
+    printf("Exercice4 : \n");
+	Exercice4();
+
+    return 0;
+}
+
+void Exercice1()
+{
+	f1();
+    f2(5);
+    f3(5);
+}
+
+void f1()
+{
+    printf("Bonjour.\n");
+}
+
+void f2(int nNbf2)
+{
+	int nI = 0;
+    for(nI=0;nI<nNbf2;nI++)
     {
-        nTabInteger[nI]=0;
-        fltTabFloat[nI]=0.0;
-        dblTabDouble[nI]=0.0;
-        cTabCar[nI]='\0'; //Correspond au caractËre de fin de chaine.
+        printf("Bonjour.\n");
     }
-    */
-    //Tout ce qu'on a dÈclarÈ jusqu'‡ prÈsent est dÈclarÈ dans la pile.
+}
 
-    //Faire un programme qui crÈe des cartes d'identitÈs.
-    //Un programme permettant de saisir un numÈro d'identification, nom, prÈnom, date de naissance, et adresse postale : "NumÈro","Nom de la rue","Code Postal", "Ville".
-    //Prendre en considÈration une chaine avec des espaces, date d'anniversaire et code postale sur un nombre limitÈ de chiffres et caractËres.
-    //On utilise des tableaux pour illustrer les informations carte d'identitÈ.
-
-    //TD carte identitÈ.
-
-    printf("Nous allons creer votre carte d'identite, nous allons commencer par votre nom, puis votre prenom, ensuite votre date de naissance et votre adresse postale, composee du numero de la rue, du nom de la rue, du code postal et de la ville.\n");
-    char sNomIdentite[TAILLE],sPrenomIdentite[TAILLE],sNomDeLaRue[TAILLE],sVille[TAILLE],sDateDeNaissance[11],sCodePostal[6];
-    int nNumeroDeRue=0, nI=0;
-    for(nI=0;nI<TAILLE;nI++)
+int f3(int nNbf3)
+{
+	int nI = 0;
+    for(nI=0;nI<nNbf3;nI++)
     {
-        sNomIdentite[nI]='\0'; //Correspond au caractËre de fin de chaine.
-        sPrenomIdentite[nI]='\0'; //Correspond au caractËre de fin de chaine.
-        sNomDeLaRue[nI]='\0'; //Correspond au caractËre de fin de chaine.
-        sVille[nI]='\0'; //Correspond au caractËre de fin de chaine.
-        if (nI<11)
-        {
-            sDateDeNaissance[nI]='\0'; //Correspond au caractËre de fin de chaine.
-            if(nI<6)
-            {
-                sCodePostal[nI]='\0'; //Correspond au caractËre de fin de chaine.
-            }
-        }
-    }
-
-    printf("Veuillez tout d'abord entrer votre nom.\n");
-    gets(sNomIdentite);
-    fflush(stdin);
-    printf("Veuillez a present entrer votre prenom.\n");
-    gets(sPrenomIdentite);
-
-    //printf("Le Nom et le Prenom %s %s",sNomIdentite,sPrenomIdentite); //Premier test concluant.
-
-    printf("Veuillez alors entrer votre date de naissance sous la forme JJ/MM/AAAA.\n");
-    gets(sDateDeNaissance);
-    printf("Nous allons a present recuperer votre adresse postale.\n");
-    printf("Veuillez entrer votre numero de rue.\n");
-    scanf("%d",&nNumeroDeRue);
-    fflush(stdin);
-    printf("A present, veuillez entrer le nom de la rue.\n");
-    gets(sNomDeLaRue);
-    printf("Veuillez alors entrer votre code postal.\n");
-    gets(sCodePostal);
-    printf("Enfin, veuillez entrer le nom de la ville.\n");
-    gets(sVille);
-
-    for (nI=0;nI<80;nI++)
-    {
-        printf("_");
-    }
-    printf("\n|\n");
-    printf("|   Nom : %s \n",sNomIdentite);
-    printf("|   Prenom : %s \n",sPrenomIdentite);
-    printf("|   Ne(e) le : %s \n",sDateDeNaissance);
-    printf("|   Adressse Postale : %d %s %s %s \n",nNumeroDeRue,sNomDeLaRue,sCodePostal,sVille);
-    printf("|");
-    for (nI=0;nI<80;nI++)
-    {
-        printf("_");
+        printf("Bonjour.\n");
     }
     return 0;
+}
+
+int n=5;
+
+void Exercice2()
+{
+	void fct (int p);
+	int n=3;
+	fct(n);
+}
+
+void fct(int p)
+{
+	printf("%d %d",n,p);
+}
+
+void Exercice3()
+{
+	//On va par puissance de 10 de 1 jusqu'√† 1 000 000 000, car 10 000 000 000 est au-dessus d'un long qu'il soit sign√© ou non.
+	long nlCompteurAppel=0;
+	while (nlCompteurAppel<=LONGMAX)
+	{
+		nlCompteurAppel++;
+		CompteAppel(nlCompteurAppel);
+	}
+}
+
+void CompteAppel(long nlLeCompteurAppel)
+{
+	int nBoolAppel=0;
+	switch(nlLeCompteurAppel)
+	{
+		case 1 : nBoolAppel=1;
+		break;
+
+		case 10 : nBoolAppel=1;
+		break;
+
+		case 100 : nBoolAppel=1;
+		break;
+
+		case 1000 : nBoolAppel=1;
+		break;
+
+		case 10000 : nBoolAppel=1;
+		break;
+
+		case 100000 : nBoolAppel=1;
+		break;
+
+		case 1000000 : nBoolAppel=1;
+		break;
+
+		case 10000000 : nBoolAppel=1;
+		break;
+
+		case 100000000 : nBoolAppel=1;
+		break;
+
+		case 1000000000 : nBoolAppel=1;
+		break;
+
+		default :
+		break;
+	}
+
+	if (nBoolAppel==1)
+	{
+		printf("Appel %ld fois.\n",nlLeCompteurAppel);
+	}
+}
+
+void Exercice4()
+{
+    int nResultAckermann=0;
+    printf("Test de la fonction d'Ackermann pour m=%d et n=%d. \n",M,N);
+    nResultAckermann=Ackermann(M,N);
+
+    printf("La fonction d'Ackermann pour m=%d et n=%d ressort : %d.\n",M,N,nResultAckermann);
+}
+
+int Ackermann(int nM,int nN)
+{
+    if (nM>=0 && nN>=0) //Ackermann n'est d√©finit que si m et n sont sup√©rieurs ou √©gaux √† 0.
+    {
+       if (nM==0) //Si M vaut 0 on est √† la fin du calcul et on renvoie le r√©sultat, on est dans le cas A(0,n).
+        {
+            return nN+1;
+        }
+        else if (nN==0) //Si N vaut 0 et que M ne vaut pas 0 on est dans le cas A(m,0).
+        {
+            return Ackermann(nM-1,1);
+        }
+        else //Si N et M sont sup√©rieurs √† 0 alors on est dans le cas A(m,n).
+        {
+            return Ackermann(nM-1,Ackermann(nM,nN-1));
+        }
+    }
+    return -1; //Si on est sur un cas impossible, -1 sert de message d'erreur.
 }
