@@ -19,6 +19,9 @@ void fct(int p);
 void Exercice3();
 void CompteAppel(long nlLeCompteurAppel);
 
+void Exercice32();
+void CompteAppel2();
+
 void Exercice4();
 int Ackermann(int nM,int nN);
 
@@ -27,12 +30,18 @@ int main()
 	printf("Exercice1 : \n");
 	Exercice1();
 
+	//Affiche 5 n(global) puis 3 n(local)
 	printf("Exercice2 : \n");
     Exercice2();
     printf("\n");
 
+
+    //Utiliser le mot clef static pour
 	printf("Exercice3 : \n");
 	Exercice3();
+
+	printf("Exercice3 second essaie :\n");
+	Exercice32();
 
     printf("Exercice4 : \n");
 	Exercice4();
@@ -71,6 +80,8 @@ int f3(int nNbf3)
     return 0;
 }
 
+//Début de l'exercice 2.
+//Affiche 5 n(global) puis 3 n(local)
 int n=5;
 
 void Exercice2()
@@ -89,7 +100,7 @@ void Exercice3()
 {
 	//On va par puissance de 10 de 1 jusqu'à 1 000 000 000, car 10 000 000 000 est au-dessus d'un long qu'il soit signé ou non.
 	long nlCompteurAppel=0;
-	while (nlCompteurAppel<=LONGMAX)
+	while (nlCompteurAppel<=4)
 	{
 		nlCompteurAppel++;
 		CompteAppel(nlCompteurAppel);
@@ -139,6 +150,27 @@ void CompteAppel(long nlLeCompteurAppel)
 	{
 		printf("Appel %ld fois.\n",nlLeCompteurAppel);
 	}
+}
+
+
+void Exercice32()
+{
+	//On va par puissance de 10 de 1 jusqu'à 1 000 000 000, car 10 000 000 000 est au-dessus d'un long qu'il soit signé ou non.
+	long nlCompteurAppel=0;
+	while (nlCompteurAppel<=4)
+	{
+		nlCompteurAppel++;
+		CompteAppel2();
+	}
+}
+
+
+void CompteAppel2()
+{
+    static int nAppel=0;
+    //Utilisation du mot clef static pour que la variable existe toujours à la fin de l'appel de la fonction et qu'elle ne soit pas réinitialisée en revoyant ce mot.
+    nAppel++;
+    printf("Le nombre d'appel actuel est : %d.\n",nAppel);
 }
 
 void Exercice4()
