@@ -3,8 +3,10 @@
 #include <math.h>
 #define TAILLE 100
 
+//Les includes du sleep.
+#include <windows.h> // notice this! you need it! (windows)
 //Les prototypes
-
+/*
 typedef struct tPoint{ //Signature du type def.
     int nX;
     int nY;
@@ -25,10 +27,17 @@ void creaDroite(tDroite *dt, tPoint pt,int nIndex);
 
 //DéplacePoint
 tPoint deplacePoint(tPoint pnt,int nV, int nW);
-
+*/
 int main()
 {
-    tPoint newPoint={0,0};
+    int i=0;
+    for (i=0;i<10;i++)
+    {
+        printf("\a");
+        Sleep(1000);
+    }
+
+/*    tPoint newPoint={0,0};
     tPoint neoPoint={0,0};
     setX(&newPoint,5);
     setY(&newPoint,8);
@@ -47,10 +56,10 @@ int main()
 
     printf("x : %d\n",getX(neoPoint));
     printf("y : %d\n",getY(neoPoint));
-
+*/
 	return 0;
 }
-
+/*
 void setX(tPoint *pt,int nNewX)
 {
     pt->nX=nNewX;
@@ -89,3 +98,4 @@ tPoint deplacePoint(tPoint pnt,int nV, int nW)
     setY(&pnt,(nW+getY(pnt))); //pnt.nY+=nW;
     return pnt;
 }
+*/
