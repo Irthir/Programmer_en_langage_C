@@ -1,97 +1,58 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define TAILLE 5
-//Les Typedef
+#define TAILLE 20
 
-typedef struct tpoint
-{   int num;
-    float x;
-    float y;
-} tpoint;
-
-
-//LES PROTOTYPES
-void exercice1();
-void exercice2();
-void initTableauTPoint (tpoint tpointTab[],int nTailleTab);
-void scanTableauTPoint(tpoint tpointTab[],int nTailleTab);
-void afficheTableauTPoint(tpoint tpointTab[],int nTailleTab);
-
-
-int main()
+int main ()
 {
-    //exercice1();
-    exercice2();
+  FILE * pFile;
+  /* Mode texte */
+  char cSaisie[TAILLE];
+  char cAutre[TAILLE];
 
-    return 0;
-}
 
-void exercice1()
-{
-    int nI;
-    tpoint ptTableau[TAILLE];
-    for (nI=0;nI<TAILLE;nI++)
-    {
-        ptTableau[nI].num=nI+1;
-        ptTableau[nI].x=0.0;
-        ptTableau[nI].y=0.0;
-    }
-    for (nI=0;nI<TAILLE;nI++)
-    {
-        printf("Veuillez rentrer la valeur en x du point numero %d.\n",nI+1);
-        scanf("%f",&ptTableau[nI].x);
-        fflush(stdin);
-        printf("Veuillez rentrer la valeur en x du point numero %d.\n",nI+1);
-        scanf("%f",&ptTableau[nI].y);
-        fflush(stdin);
-    }
-    for (nI=0;nI<TAILLE;nI++)
-    {
-        printf("La valeur en x du point numero %d est %f.\n",nI+1,ptTableau[nI].x);
-        printf("La valeur en y du point numero %d est %f.\n",nI+1,ptTableau[nI].y);
-    }
-}
+  //Saisie utilisateur
+  printf("Veuillez saisir un texte a inserer\n");
+  fgets(cSaisie,TAILLE,stdin);
+  //Ouverture du fichier
+  pFile = fopen("myfile.txt", "w");
 
-void exercice2()
-{
-    tpoint ptTableau[TAILLE];
-    initTableauTPoint(ptTableau,TAILLE);
-    scanTableauTPoint(ptTableau,TAILLE);
-    afficheTableauTPoint(ptTableau,TAILLE);
-}
+  //Ecriture dans le fichier
+  if (pFile != NULL) {
+    fprintf(pFile,"%s\n",cSaisie);
+    fclose (pFile);
+  }
 
-void initTableauTPoint (tpoint tpointTab[],int nTailleTab)
-{
-    int nI;
-    for (nI=0;nI<nTailleTab;nI++)
-    {
-        tpointTab[nI].num=nI+1;
-        tpointTab[nI].x=0.0;
-        tpointTab[nI].y=0.0;
-    }
-}
+  pFile = fopen("myfile.txt","r");
+  printf("Le fichier contient :\n");
 
-void scanTableauTPoint(tpoint tpointTab[],int nTailleTab)
-{
-    int nI;
-    for (nI=0;nI<TAILLE;nI++)
-    {
-        printf("Veuillez rentrer la valeur en x du point numero %d.\n",nI+1);
-        scanf("%f",&tpointTab[nI].x);
-        fflush(stdin);
-        printf("Veuillez rentrer la valeur en x du point numero %d.\n",nI+1);
-        scanf("%f",&tpointTab[nI].y);
-        fflush(stdin);
-    }
-}
+  //Lecture du fichier
+  if (pFile != NULL) {
+    fgets(cAutre,TAILLE,pFile);
+    printf("%s",cAutre);
+    fclose (pFile);
+  }
 
-void afficheTableauTPoint(tpoint tpointTab[],int nTailleTab)
-{
-    int nI;
-    for (nI=0;nI<TAILLE;nI++)
-    {
-        printf("La valeur en x du point numero %d est %f.\n",nI+1,tpointTab[nI].x);
-        printf("La valeur en y du point numero %d est %f.\n",nI+1,tpointTab[nI].y);
-    }
+
+  /*Mode binaire */
+  int nSaisie;
+  int nAutre;
+
+  printf("Veuillez saisir un entier a inserer\n");
+  scanf("%d",&nSaisie);
+  //fgets(cSaisie,TAILLE,stdin);
+  pFile = fopen("myfile.bin","wb");
+  if (pFile != NULL ) {
+    fwrite(&nSaisie,sizeof(int),sizeof(nSaisie),pFile);
+    fclose(pFile);
+  }
+  printf("Le fichier contient :\n");
+  pFile = fopen("myfile.bin","rb");
+  if (pFile != NULL) {
+    fread(&nAutre,sizeof(int),sizeof(nSaisie),pFile);
+    printf("%d",nAutre);
+    fclose(pFile);
+  }
+
+  return 0;
 }
